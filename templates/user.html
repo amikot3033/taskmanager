@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль {{ user.username }}{% endblock %}
+
+{% block content %}
+<h2>Пользователь: {{ user.username }}</h2>
+
+<h3>Назначенные задачи</h3>
+<ul>
+    {% for task in user.tasks %}
+        <li><a href="{{ url_for('task_page', task_id=task.id) }}">{{ task.title }}</a></li>
+    {% else %}
+        <li>Задач пока нет</li>
+    {% endfor %}
+</ul>
+{% endblock %}
